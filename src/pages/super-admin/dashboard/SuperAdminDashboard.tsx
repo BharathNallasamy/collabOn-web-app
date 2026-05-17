@@ -419,7 +419,7 @@ const SuperAdminDashboard = () => {
       {/* ── Expiry Risk Table ─────────────────────────────────────────────── */}
       <Card noPadding className="p-4">
         {/* Section header as a callout box */}
-        <div className="mb-4 flex items-center gap-2 rounded-lg bg-red-50/60 p-4 border border-red-100 border-l-4 border-red-500">
+        <div className="mb-4 flex items-center gap-2 rounded-lg bg-red-50/60 p-4 border border-red-100 border-l-4">
           <Info size={16} className="text-red-500 flex-shrink-0" />
           <p className="text-[13px] font-bold text-red-500">Expiry Risk (Next 15 Days)</p>
         </div>

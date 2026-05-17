@@ -1,5 +1,6 @@
 import "./App.css";
 import { lazy, Suspense } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { GroupsProvider } from "./contexts/GroupsContext";
 import { RolesProvider } from "./contexts/RolesContext";
@@ -20,12 +21,12 @@ const Layouts = lazy(() => import("./components/Layouts/Layouts"));
 const SuperAdminLayouts = lazy(() => import("./components/SuperAdminLayouts/SuperAdminLayouts"));
 
 // Super Admin Pages
-const SuperAdminDashboard   = lazy(() => import("./pages/super-admin/dashboard/SuperAdminDashboard"));
-const SuperAdminCRM         = lazy(() => import("./pages/super-admin/crm/CRM"));
-const SuperAdminReg         = lazy(() => import("./pages/super-admin/registrations/Registrations"));
-const SuperAdminUserMgmt    = lazy(() => import("./pages/super-admin/user-management/UserManagement"));
+const SuperAdminDashboard = lazy(() => import("./pages/super-admin/dashboard/SuperAdminDashboard"));
+const SuperAdminCRM = lazy(() => import("./pages/super-admin/crm/CRM"));
+const SuperAdminReg = lazy(() => import("./pages/super-admin/registrations/Registrations"));
+const SuperAdminUserMgmt = lazy(() => import("./pages/super-admin/user-management/UserManagement"));
 const SuperAdminServiceInvoice = lazy(() => import("./pages/super-admin/finance/ServiceInvoice"));
-const SuperAdminPaymentReport  = lazy(() => import("./pages/super-admin/finance/PaymentReport"));
+const SuperAdminPaymentReport = lazy(() => import("./pages/super-admin/finance/PaymentReport"));
 const SuperAdminInvoiceHistory = lazy(() =>
   import("./pages/super-admin/finance/PaymentReport").then((module) => ({
     default: module.SuperAdminInvoiceHistory,
@@ -36,10 +37,10 @@ const SuperAdminPendingPayment = lazy(() =>
     default: module.SuperAdminPendingPayment,
   }))
 );
-const SuperAdminExpenses       = lazy(() => import("./pages/super-admin/finance/Expenses"));
-const SuperAdminSupport     = lazy(() => import("./pages/super-admin/support/Support"));
-const SuperAdminReports     = lazy(() => import("./pages/super-admin/reports/Reports"));
-const SuperAdminSettings    = lazy(() => import("./pages/super-admin/settings/Settings"));
+const SuperAdminExpenses = lazy(() => import("./pages/super-admin/finance/Expenses"));
+const SuperAdminSupport = lazy(() => import("./pages/super-admin/support/Support"));
+const SuperAdminReports = lazy(() => import("./pages/super-admin/reports/Reports"));
+const SuperAdminSettings = lazy(() => import("./pages/super-admin/settings/Settings"));
 
 // Dashboard
 const Overview = lazy(() => import("./components/Dashboard/Overview"));
@@ -48,9 +49,7 @@ const Overview = lazy(() => import("./components/Dashboard/Overview"));
 const GroupAccessManagement = lazy(
   () => import("./pages/management/user-management/GroupAccessManagement")
 );
-const AddAdminGroup = lazy(
-  () => import("./pages/management/user-management/AddAdminGroup")
-);
+const AddAdminGroup = lazy(() => import("./pages/management/user-management/AddAdminGroup"));
 const RoleManagement = lazy(() => import("./pages/management/user-management/RoleManagement"));
 const UserAccessManagement = lazy(
   () => import("./pages/management/user-management/UserAccessManagement")
@@ -66,7 +65,9 @@ const Subjects = lazy(() => import("./pages/management/academic-management/Subje
 const Semester = lazy(() => import("./pages/management/academic-management/Semester"));
 const RoomsLab = lazy(() => import("./pages/management/academic-management/RoomsLab"));
 const ExamScheduling = lazy(() => import("./pages/management/academic-management/ExamScheduling"));
-const AcademicCalendar = lazy(() => import("./pages/management/academic-management/AcademicCalendar"));
+const AcademicCalendar = lazy(
+  () => import("./pages/management/academic-management/AcademicCalendar")
+);
 
 // Student Management
 const StudentManagement = lazy(() => import("./pages/student-management/StudentManagement"));
@@ -104,18 +105,18 @@ const ManageInstitutions = lazy(
 
 // New nav pages
 
-const StaffWorkload       = lazy(() => import("./pages/staff-workload/StaffWorkload"));
-const FeesCollection      = lazy(() => import("./pages/finance/Finance"));  // Fees Collection tab
-const FeesConfiguration   = lazy(() => import("./pages/finance/FeesConfiguration"));
-const FeesStructure       = lazy(() => import("./pages/finance/FeesStructure"));
-const FeesGeneration      = lazy(() => import("./pages/finance/FeesGeneration"));
-const AssetManagement     = lazy(() => import("./pages/asset-management/AssetManagement"));
+const StaffWorkload = lazy(() => import("./pages/staff-workload/StaffWorkload"));
+const FeesCollection = lazy(() => import("./pages/finance/Finance")); // Fees Collection tab
+const FeesConfiguration = lazy(() => import("./pages/finance/FeesConfiguration"));
+const FeesStructure = lazy(() => import("./pages/finance/FeesStructure"));
+const FeesGeneration = lazy(() => import("./pages/finance/FeesGeneration"));
+const AssetManagement = lazy(() => import("./pages/asset-management/AssetManagement"));
 
 // Asset Management sub-pages
 const SupplierManagement = lazy(() => import("./pages/asset-management/SupplierManagement"));
-const AssetLibrary       = lazy(() => import("./pages/asset-management/AssetLibrary"));
-const AssetPurchase      = lazy(() => import("./pages/asset-management/AssetPurchase"));
-const AvailableAsset     = lazy(() => import("./pages/asset-management/AvailableAsset"));
+const AssetLibrary = lazy(() => import("./pages/asset-management/AssetLibrary"));
+const AssetPurchase = lazy(() => import("./pages/asset-management/AssetPurchase"));
+const AvailableAsset = lazy(() => import("./pages/asset-management/AvailableAsset"));
 
 // Other pages
 const Admissions = lazy(() => import("./pages/admissions/Admissions"));
@@ -138,11 +139,15 @@ const AcademicSchedule = lazy(() => import("./pages/settings/AcademicSchedule"))
 const ExamConfiguration = lazy(() => import("./pages/settings/ExamConfiguration"));
 const StaffAttendanceSettings = lazy(() => import("./pages/settings/StaffAttendanceSettings"));
 const StudentAttendanceSettings = lazy(() => import("./pages/settings/StudentAttendanceSettings"));
-const AdmissionRollNumberSequence = lazy(() => import("./pages/settings/AdmissionRollNumberSequence"));
+const AdmissionRollNumberSequence = lazy(
+  () => import("./pages/settings/AdmissionRollNumberSequence")
+);
 const PaymentConfiguration = lazy(() => import("./pages/settings/PaymentConfiguration"));
 const FeeCalculation = lazy(() => import("./pages/settings/FeeCalculation"));
 const EventRegistration = lazy(() => import("./pages/campus-comms/EventRegistration"));
-const EventRegistrationDetails = lazy(() => import("./pages/campus-comms/EventRegistrationDetails"));
+const EventRegistrationDetails = lazy(
+  () => import("./pages/campus-comms/EventRegistrationDetails")
+);
 const Circulars = lazy(() => import("./pages/campus-comms/Circulars"));
 const CreateCircular = lazy(() => import("./pages/campus-comms/CreateCircular"));
 const EventManagement = lazy(() => import("./pages/campus-comms/EventManagement"));
@@ -169,148 +174,187 @@ function App() {
           <RolesProvider>
             <StaffProvider>
               <Suspense fallback={<LoadingFallback />}>
-              <Routes>
-                {/* Auth routes */}
-                <Route path="/" element={<Navigate to="/login" replace />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="/otp" element={<Otp />} />
-                <Route path="/reset-password" element={<ResetPassword />} />
+                <Routes>
+                  {/* Auth routes */}
+                  <Route path="/" element={<Navigate to="/login" replace />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/forgot-password" element={<ForgotPassword />} />
+                  <Route path="/otp" element={<Otp />} />
+                  <Route path="/reset-password" element={<ResetPassword />} />
 
-                {/* Protected app routes — Sidebar + Navbar always visible via Layouts */}
-                <Route path="/layout" element={<Layouts />}>
-                  <Route index element={<Overview />} />
+                  {/* Protected app routes — Sidebar + Navbar always visible via Layouts */}
+                  <Route path="/layout" element={<Layouts />}>
+                    <Route index element={<Overview />} />
 
-                  {/* Academic Management */}
-                  <Route path="academic/program-catalog" element={<ProgramCatalog />} />
-                  <Route path="academic/departments" element={<Departments />} />
-                  <Route path="academic/classes" element={<Classes />} />
-                  <Route path="academic/batch" element={<Batch />} />
-                  <Route path="academic/curriculum" element={<Curriculum />} />
-                  <Route path="academic/subjects" element={<Subjects />} />
-                  <Route path="academic/semester" element={<Semester />} />
-                  <Route path="academic/rooms-lab" element={<RoomsLab />} />
-                  <Route path="academic/exam-scheduling" element={<ExamScheduling />} />
-                  <Route path="academic/academic-calendar" element={<AcademicCalendar />} />
+                    {/* Academic Management */}
+                    <Route path="academic/program-catalog" element={<ProgramCatalog />} />
+                    <Route path="academic/departments" element={<Departments />} />
+                    <Route path="academic/classes" element={<Classes />} />
+                    <Route path="academic/batch" element={<Batch />} />
+                    <Route path="academic/curriculum" element={<Curriculum />} />
+                    <Route path="academic/subjects" element={<Subjects />} />
+                    <Route path="academic/semester" element={<Semester />} />
+                    <Route path="academic/rooms-lab" element={<RoomsLab />} />
+                    <Route path="academic/exam-scheduling" element={<ExamScheduling />} />
+                    <Route path="academic/academic-calendar" element={<AcademicCalendar />} />
 
-                  {/* Student Management */}
-                  <Route path="student-management" element={<StudentManagement />} />
-                  <Route path="student-management/directory" element={<StudentDirectory />} />
-                  <Route path="student-management/directory/:id" element={<StudentDetail />} />
-                  <Route path="student-management/certificate-registry" element={<CertificateRegistry />} />
-                  <Route path="student-management/certificate-registry/issue" element={<CertificateTemplate />} />
+                    {/* Student Management */}
+                    <Route path="student-management" element={<StudentManagement />} />
+                    <Route path="student-management/directory" element={<StudentDirectory />} />
+                    <Route path="student-management/directory/:id" element={<StudentDetail />} />
+                    <Route
+                      path="student-management/certificate-registry"
+                      element={<CertificateRegistry />}
+                    />
+                    <Route
+                      path="student-management/certificate-registry/issue"
+                      element={<CertificateTemplate />}
+                    />
 
-                  {/* HR Management */}
-                  <Route path="hr-management" element={<HRManagement />} />
+                    {/* HR Management */}
+                    <Route path="hr-management" element={<HRManagement />} />
 
-                  {/* Staff Management */}
-                  <Route path="staff-management/dashboard" element={<StaffDashboard />} />
-                  <Route path="staff-management/department" element={<StaffDepartment />} />
-                  <Route path="staff-management/designations" element={<Designations />} />
-                  <Route path="staff-management/employees" element={<EmployeesDirectory />} />
-                  <Route path="staff-management/employee-addition" element={<EmployeeAddition />} />
-                  <Route
-                    path="staff-management/attendance-permission"
-                    element={<AttendancePermission />}
-                  />
-                  <Route path="staff-management/leave-creation" element={<LeaveCreation />} />
-                  <Route path="staff-management/leave-allocation" element={<LeaveAllocation />} />
-                  <Route path="staff-management/shift" element={<Shift />} />
-                  <Route path="staff-management/approval" element={<Approval />} />
-                  <Route path="staff-management/assign-shift" element={<AssignShift />} />
+                    {/* Staff Management */}
+                    <Route path="staff-management/dashboard" element={<StaffDashboard />} />
+                    <Route path="staff-management/department" element={<StaffDepartment />} />
+                    <Route path="staff-management/designations" element={<Designations />} />
+                    <Route path="staff-management/employees" element={<EmployeesDirectory />} />
+                    <Route
+                      path="staff-management/employee-addition"
+                      element={<EmployeeAddition />}
+                    />
+                    <Route
+                      path="staff-management/attendance-permission"
+                      element={<AttendancePermission />}
+                    />
+                    <Route path="staff-management/leave-creation" element={<LeaveCreation />} />
+                    <Route path="staff-management/leave-allocation" element={<LeaveAllocation />} />
+                    <Route path="staff-management/shift" element={<Shift />} />
+                    <Route path="staff-management/approval" element={<Approval />} />
+                    <Route path="staff-management/assign-shift" element={<AssignShift />} />
 
+                    {/* User Management */}
+                    <Route
+                      path="user-management/group-access"
+                      element={<GroupAccessManagement />}
+                    />
+                    <Route path="user-management/group-access/add" element={<AddAdminGroup />} />
+                    <Route path="user-management/roles" element={<RoleManagement />} />
+                    <Route path="user-management/user-access" element={<UserAccessManagement />} />
 
-                  {/* User Management */}
-                  <Route path="user-management/group-access" element={<GroupAccessManagement />} />
-                  <Route path="user-management/group-access/add" element={<AddAdminGroup />} />
-                  <Route path="user-management/roles" element={<RoleManagement />} />
-                  <Route path="user-management/user-access" element={<UserAccessManagement />} />
+                    {/* New nav pages */}
+                    <Route path="manage-institution" element={<ManageInstitutions />} />
+                    <Route path="staff-workload" element={<StaffWorkload />} />
 
-                  {/* New nav pages */}
-                  <Route path="manage-institution" element={<ManageInstitutions />} />
-                  <Route path="staff-workload"     element={<StaffWorkload />} />
+                    {/* Finance sub-pages */}
+                    <Route path="finance/fees-configuration" element={<FeesConfiguration />} />
+                    <Route path="finance/fees-structure" element={<FeesStructure />} />
+                    <Route path="finance/fees-generation" element={<FeesGeneration />} />
+                    <Route path="finance/fees-collection" element={<FeesCollection />} />
 
-                  {/* Finance sub-pages */}
-                  <Route path="finance/fees-configuration" element={<FeesConfiguration />} />
-                  <Route path="finance/fees-structure"     element={<FeesStructure />} />
-                  <Route path="finance/fees-generation"    element={<FeesGeneration />} />
-                  <Route path="finance/fees-collection"    element={<FeesCollection />} />
+                    <Route path="asset-management" element={<AssetManagement />} />
+                    <Route path="asset-management/suppliers" element={<SupplierManagement />} />
+                    <Route path="asset-management/asset-library" element={<AssetLibrary />} />
+                    <Route path="asset-management/asset-purchase" element={<AssetPurchase />} />
+                    <Route path="asset-management/available-asset" element={<AvailableAsset />} />
 
-                  <Route path="asset-management"   element={<AssetManagement />} />
-                  <Route path="asset-management/suppliers"       element={<SupplierManagement />} />
-                  <Route path="asset-management/asset-library"   element={<AssetLibrary />} />
-                  <Route path="asset-management/asset-purchase"  element={<AssetPurchase />} />
-                  <Route path="asset-management/available-asset" element={<AvailableAsset />} />
+                    {/* Other pages */}
+                    <Route path="admissions" element={<Admissions />} />
+                    <Route path="admissions/overview" element={<AdmissionsOverview />} />
+                    <Route path="admissions/new-entry" element={<ManualAdmissionEntry />} />
+                    <Route path="admissions/application-review" element={<ApplicationReview />} />
+                    <Route
+                      path="admissions/application-review/:id"
+                      element={<ApplicationDetail />}
+                    />
+                    <Route path="calendar" element={<Calendar />} />
+                    <Route path="fees" element={<Fees />} />
+                    <Route path="results" element={<Results />} />
+                    <Route path="results/add-individual" element={<IndividualResultEntry />} />
+                    <Route path="reports" element={<Reports />} />
+                    <Route path="reports/view/:id" element={<ReportDetail />} />
+                    <Route path="campus-comms" element={<CampusComms />} />
+                    <Route path="support" element={<Support />} />
+                    <Route path="settings" element={<Settings />} />
+                    <Route path="settings/institution-details" element={<InstitutionDetails />} />
+                    <Route path="settings/contact-details" element={<ContactDetails />} />
+                    <Route path="settings/academic-schedule" element={<AcademicSchedule />} />
+                    <Route path="settings/exam-configuration" element={<ExamConfiguration />} />
+                    <Route path="settings/staff-attendance" element={<StaffAttendanceSettings />} />
+                    <Route
+                      path="settings/student-attendance"
+                      element={<StudentAttendanceSettings />}
+                    />
+                    <Route
+                      path="settings/numbering-sequence"
+                      element={<AdmissionRollNumberSequence />}
+                    />
+                    <Route
+                      path="settings/payment-configuration"
+                      element={<PaymentConfiguration />}
+                    />
+                    <Route path="settings/fee-calculation" element={<FeeCalculation />} />
 
-                  {/* Other pages */}
-                  <Route path="admissions"                    element={<Admissions />} />
-                  <Route path="admissions/overview"           element={<AdmissionsOverview />} />
-                  <Route path="admissions/new-entry"          element={<ManualAdmissionEntry />} />
-                  <Route path="admissions/application-review" element={<ApplicationReview />} />
-                  <Route path="admissions/application-review/:id" element={<ApplicationDetail />} />
-                  <Route path="calendar"     element={<Calendar />} />
-                  <Route path="fees"         element={<Fees />} />
-                  <Route path="results"      element={<Results />} />
-                  <Route path="results/add-individual" element={<IndividualResultEntry />} />
-                  <Route path="reports"           element={<Reports />} />
-                  <Route path="reports/view/:id" element={<ReportDetail />} />
-                  <Route path="campus-comms" element={<CampusComms />} />
-                  <Route path="support"      element={<Support />} />
-                  <Route path="settings"     element={<Settings />} />
-                  <Route path="settings/institution-details" element={<InstitutionDetails />} />
-                  <Route path="settings/contact-details" element={<ContactDetails />} />
-                  <Route path="settings/academic-schedule" element={<AcademicSchedule />} />
-                  <Route path="settings/exam-configuration" element={<ExamConfiguration />} />
-                  <Route path="settings/staff-attendance" element={<StaffAttendanceSettings />} />
-                  <Route path="settings/student-attendance" element={<StudentAttendanceSettings />} />
-                  <Route path="settings/numbering-sequence" element={<AdmissionRollNumberSequence />} />
-                  <Route path="settings/payment-configuration" element={<PaymentConfiguration />} />
-                  <Route path="settings/fee-calculation" element={<FeeCalculation />} />
-
-                  {/* Campus Comms */}
-                  <Route path="campus-comms/event-registration" element={<EventRegistration />} />
-                  <Route path="campus-comms/event-registration/view/:id" element={<EventRegistrationDetails />} />
-                  <Route path="campus-comms/circulars" element={<Circulars />} />
-                  <Route path="campus-comms/circulars/create" element={<CreateCircular />} />
-                  <Route path="campus-comms/circulars/edit/:id" element={<CreateCircular />} />
-                  <Route path="campus-comms/event-management" element={<EventManagement />} />
-                  <Route path="campus-comms/event-management/view/:id" element={<EventDetails />} />
-                  <Route path="campus-comms/event-management/create" element={<CreateEvent />} />
-                  <Route path="campus-comms/event-management/edit/:id" element={<CreateEvent />} />
-                  <Route path="campus-comms/feed-management" element={<FeedManagement />} />
-                  <Route path="campus-comms/feed-management/view/:id" element={<FeedDetails />} />
-                  <Route path="campus-comms/feed-management/create" element={<CreateFeed />} />
-                  <Route path="campus-comms/feed-management/edit/:id" element={<CreateFeed />} />
-                </Route>
-
-                {/* ── Super Admin routes ───────────────────────────────── */}
-                <Route path="/super-admin" element={<SuperAdminLayouts />}>
-                  <Route index element={<SuperAdminDashboard />} />
-                  <Route path="crm"             element={<SuperAdminCRM />} />
-                  <Route path="registrations"   element={<SuperAdminReg />} />
-                  <Route path="user-management" element={<SuperAdminUserMgmt />} />
-                  <Route path="finance">
-                    <Route index element={<Navigate to="service-invoice" replace />} />
-                    <Route path="service-invoice" element={<SuperAdminServiceInvoice />} />
-                    <Route path="payment-report" element={<SuperAdminPaymentReport />} />
-                    <Route path="payment-report/:institutionId/pending" element={<SuperAdminPendingPayment />} />
-                    <Route path="payment-report/:institutionId" element={<SuperAdminInvoiceHistory />} />
-                    <Route path="expenses" element={<SuperAdminExpenses />} />
+                    {/* Campus Comms */}
+                    <Route path="campus-comms/event-registration" element={<EventRegistration />} />
+                    <Route
+                      path="campus-comms/event-registration/view/:id"
+                      element={<EventRegistrationDetails />}
+                    />
+                    <Route path="campus-comms/circulars" element={<Circulars />} />
+                    <Route path="campus-comms/circulars/create" element={<CreateCircular />} />
+                    <Route path="campus-comms/circulars/edit/:id" element={<CreateCircular />} />
+                    <Route path="campus-comms/event-management" element={<EventManagement />} />
+                    <Route
+                      path="campus-comms/event-management/view/:id"
+                      element={<EventDetails />}
+                    />
+                    <Route path="campus-comms/event-management/create" element={<CreateEvent />} />
+                    <Route
+                      path="campus-comms/event-management/edit/:id"
+                      element={<CreateEvent />}
+                    />
+                    <Route path="campus-comms/feed-management" element={<FeedManagement />} />
+                    <Route path="campus-comms/feed-management/view/:id" element={<FeedDetails />} />
+                    <Route path="campus-comms/feed-management/create" element={<CreateFeed />} />
+                    <Route path="campus-comms/feed-management/edit/:id" element={<CreateFeed />} />
                   </Route>
-                  <Route path="support"         element={<SuperAdminSupport />} />
-                  <Route path="reports"         element={<SuperAdminReports />} />
-                  <Route path="settings"        element={<SuperAdminSettings />} />
-                </Route>
 
-                {/* Fallback */}
-                <Route path="*" element={<Navigate to="/login" replace />} />
-              </Routes>
-            </Suspense>
-          </StaffProvider>
-        </RolesProvider>
-      </GroupsProvider>
-    </UserProvider>
-  </AuthProvider>
+                  {/* ── Super Admin routes ───────────────────────────────── */}
+                  <Route path="/super-admin" element={<SuperAdminLayouts />}>
+                    <Route index element={<SuperAdminDashboard />} />
+                    <Route path="crm" element={<SuperAdminCRM />} />
+                    <Route path="registrations" element={<SuperAdminReg />} />
+                    <Route path="user-management" element={<SuperAdminUserMgmt />} />
+                    <Route path="finance">
+                      <Route index element={<Navigate to="service-invoice" replace />} />
+                      <Route path="service-invoice" element={<SuperAdminServiceInvoice />} />
+                      <Route path="payment-report" element={<SuperAdminPaymentReport />} />
+                      <Route
+                        path="payment-report/:institutionId/pending"
+                        element={<SuperAdminPendingPayment />}
+                      />
+                      <Route
+                        path="payment-report/:institutionId"
+                        element={<SuperAdminInvoiceHistory />}
+                      />
+                      <Route path="expenses" element={<SuperAdminExpenses />} />
+                    </Route>
+                    <Route path="support" element={<SuperAdminSupport />} />
+                    <Route path="reports" element={<SuperAdminReports />} />
+                    <Route path="settings" element={<SuperAdminSettings />} />
+                  </Route>
+
+                  {/* Fallback */}
+                  <Route path="*" element={<Navigate to="/login" replace />} />
+                </Routes>
+                <Analytics />
+              </Suspense>
+            </StaffProvider>
+          </RolesProvider>
+        </GroupsProvider>
+      </UserProvider>
+    </AuthProvider>
   );
 }
 
