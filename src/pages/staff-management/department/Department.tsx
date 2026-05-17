@@ -158,7 +158,7 @@ const Department = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentDepartments = departments.slice(startIndex, startIndex + itemsPerPage);
 
-  const columns: Column<(typeof INITIAL_DEPARTMENTS)[0]>[] = [
+  const columns: Column<(typeof MOCK_DEPARTMENTS)[0]>[] = [
     {
       key: "name",
       header: "Name",

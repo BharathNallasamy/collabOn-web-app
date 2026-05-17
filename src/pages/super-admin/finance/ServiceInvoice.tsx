@@ -18,8 +18,6 @@ import {
   FileJson,
 } from "lucide-react";
 import DatePicker from "../../../components/common/DatePicker";
-import Card from "../../../components/common/Card";
-import Button from "../../../components/common/Button/Button";
 import DataTable, { type Column } from "../../../components/common/Table/DataTable";
 import CustomDropdown from "../../../components/common/Dropdown";
 import Modal from "../../../components/common/Modal/Modal";
@@ -583,7 +581,7 @@ const SuperAdminServiceInvoice = () => {
               <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-100 rounded-lg shadow-lg z-[100] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
                 <button 
                   onClick={() => {
-                    exportToExcel(MOCK_INVOICES, "Service Invoices", "Service_Invoices.xlsx");
+                    exportToExcel(MOCK_INVOICES as unknown as Record<string, unknown>[], "Service Invoices", "Service_Invoices.xlsx");
                     setShowExport(false);
                   }}
                   className="flex items-center gap-3 w-full px-4 py-2.5 text-[11px] font-bold text-gray-600 hover:bg-gray-50 transition-colors border-b border-gray-50"
@@ -614,7 +612,7 @@ const SuperAdminServiceInvoice = () => {
                 </button>
                 <button 
                   onClick={() => {
-                    exportToCSV(MOCK_INVOICES, "Service_Invoices.csv");
+                    exportToCSV(MOCK_INVOICES as unknown as Record<string, unknown>[], "Service_Invoices.csv");
                     setShowExport(false);
                   }}
                   className="flex items-center gap-3 w-full px-4 py-2.5 text-[11px] font-bold text-gray-600 hover:bg-gray-50 transition-colors"

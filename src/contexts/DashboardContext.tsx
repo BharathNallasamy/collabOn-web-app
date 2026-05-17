@@ -4,7 +4,7 @@ import {
   type DashboardStats,
   type AttendanceData,
   type RecentActivity,
-} from "../components/services/dashboardService";
+} from "../services/dashboardService";
 
 interface DashboardContextType {
   stats: DashboardStats | null;

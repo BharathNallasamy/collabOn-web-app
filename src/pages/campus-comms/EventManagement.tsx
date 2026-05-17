@@ -5,7 +5,8 @@ import Card from "../../components/common/Card";
 import Button from "../../components/common/Button/Button";
 import DataTable, { type Column } from "../../components/common/Table/DataTable";
 import { ChevronDownIcon, EditIcon, DocumentIcon, PlusIcon } from "../../components/common/Icons";
-import { getEvents, type EventRow, type EventStatus } from "./eventStore";
+import { getEvents } from "./eventStore";
+import { type EventRow, type EventStatus } from "../../types/interfaces";
 
 // ── Custom Dropdown ───────────────────────────────────────────────────────────
 const CustomDropdown = ({ label, options, value, onChange }: {

@@ -19,10 +19,7 @@ const STEPS = [
 ] as const;
 
 import {
-  type WorkloadBreakdown,
   type AllocationData,
-  type FacultyCapacity,
-  type TimetableSlot,
 } from "../../types/interfaces";
 import {
   SEED_WORKLOAD_BREAKDOWN as STEP1_MOCK,

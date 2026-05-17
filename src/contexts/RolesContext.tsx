@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 
 import { type Role } from "../types/interfaces";
+export type { Role };
 
 // ── Seed data — replace with API call when backend is ready ───────────────────
 const SEED_ROLES: Role[] = [

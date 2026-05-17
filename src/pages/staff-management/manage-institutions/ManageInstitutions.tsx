@@ -6,7 +6,7 @@ import Button from "../../../components/common/Button/Button";
 import Card from "../../../components/common/Card";
 import Modal from "../../../components/common/Modal/Modal";
 import DataTable from "../../../components/common/Table/DataTable";
-import { branchService } from "../../../components/services/branchService";
+import { branchService } from "../../../services/branchService";
 import { type BranchItem } from "../../../types/interfaces";
 import { SEED_BRANCHES as MOCK_LIST_DATA } from "../../../types/mockData";
 

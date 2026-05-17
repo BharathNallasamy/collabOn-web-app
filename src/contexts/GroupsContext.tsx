@@ -2,8 +2,9 @@ import React, { createContext, useContext, useState } from "react";
 
 import { type Group, RIGHTS_MODULES, REPORT_MODULES, makeDefaultPerms } from "../types/groups";
 
-// Re-export types only
+// Re-export types and values for consumers
 export type { PermMap, Group } from "../types/groups";
+export { RIGHTS_MODULES, REPORT_MODULES, makeDefaultPerms } from "../types/groups";
 
 // ── Seed groups — replace with API call when backend is ready ─────────────────
 const SEED_GROUPS: Group[] = [

@@ -1,5 +1,4 @@
-import React from "react";
-
+﻿
 const Fees = () => (
   <div className="space-y-4">
     <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">

@@ -12,7 +12,6 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
   MoreVerticalIcon,
-  DownloadIcon,
   type LucideIcon,
 } from "../../../components/common/Icons";
 import Modal from "../../../components/common/Modal/Modal";
@@ -60,15 +59,6 @@ const EmployeesDirectory = () => {
       }, 2000);
     }
   }, [location]);
-
-  // Modal states
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [newEmployee, setNewEmployee] = useState({
-    name: "",
-    department: "",
-    designation: "",
-  });
 
   // Upload states
   const [uploadLoading, setUploadLoading] = useState(false);

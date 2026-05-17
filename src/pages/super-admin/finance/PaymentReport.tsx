@@ -14,7 +14,6 @@ import {
 import {
   type InstitutionPaymentReport,
   type InvoiceHistory,
-  type PendingInvoice
 } from "../../../types/interfaces";
 
 

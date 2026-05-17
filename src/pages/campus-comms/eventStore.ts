@@ -1,7 +1,7 @@
 // Module-level store — persists across route changes within the same session.
 // Both EventManagement and CreateEvent import from here.
 
-import { type EventRow, type EventStatus } from "../../types/interfaces";
+import { type EventRow } from "../../types/interfaces";
 import { SEED_EVENTS } from "../../types/mockData";
 
 

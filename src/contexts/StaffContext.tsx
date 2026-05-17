@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 
 import { type EmployeeItem } from "../types/interfaces";
+export type { EmployeeItem };
 import { SEED_EMPLOYEES as INITIAL_EMPLOYEES } from "../types/mockData";
 
 interface StaffContextType {

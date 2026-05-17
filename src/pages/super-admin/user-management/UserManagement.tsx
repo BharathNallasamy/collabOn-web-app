@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { ShieldCheck, Check, ChevronDown, Plus, Pencil, XCircle, CheckCircle2 } from "lucide-react";
-import Card from "../../../components/common/Card";
-import Button from "../../../components/common/Button/Button";
 import ManagementModal from "../../../components/Layouts/ManagementModal";
 import DataTable from "../../../components/common/Table/DataTable";
 import { type User } from "../../../types/interfaces";

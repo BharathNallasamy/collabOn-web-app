@@ -2,7 +2,26 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import * as XLSX from "xlsx";
 import { type Lead, type InstitutionStructure, type PlanType, type CRMStatus } from "../../../types/interfaces";
-import { SEED_LEADS, SEED_CRM_METRICS, SEED_ALL_STRUCTURES, SEED_ALL_PLANS, SEED_ALL_STATUSES, SEED_LEAD_SOURCES, SEED_ENGAGEMENT_MODELS, SEED_ACTION_TYPES } from "../../../types/mockData";
+import { SEED_LEADS, SEED_CRM_METRICS, SEED_LEAD_SOURCES, SEED_ENGAGEMENT_MODELS, SEED_ACTION_TYPES } from "../../../types/mockData";
+
+const SEED_ALL_STRUCTURES: InstitutionStructure[] = ["Single", "Group"];
+const SEED_ALL_PLANS: PlanType[] = ["Starter", "Growth", "Enterprise"];
+const SEED_ALL_STATUSES: CRMStatus[] = ["New", "Follow Up", "Hold", "Lost", "Converted - Trail Version", "Converted - Paid Version"];
+
+const PLAN_STYLE: Record<PlanType, string> = {
+  "Starter": "bg-blue-50 text-blue-700",
+  "Growth": "bg-green-50 text-green-700",
+  "Enterprise": "bg-purple-50 text-purple-700",
+};
+
+const STATUS_STYLE: Record<CRMStatus, string> = {
+  "New": "text-blue-600",
+  "Follow Up": "text-amber-600",
+  "Hold": "text-gray-500",
+  "Lost": "text-red-600",
+  "Converted - Trail Version": "text-green-600",
+  "Converted - Paid Version": "text-emerald-700",
+};
 
 // ── Shared CRM Components ───────────────────────────────────────────────────
 

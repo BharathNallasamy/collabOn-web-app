@@ -158,7 +158,7 @@ const Designations = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentDesignations = designations.slice(startIndex, startIndex + itemsPerPage);
 
-  const columns: Column<(typeof INITIAL_DESIGNATIONS)[0]>[] = [
+  const columns: Column<(typeof MOCK_DESIGNATIONS)[0]>[] = [
     {
       key: "name",
       header: "Name",

@@ -6,11 +6,11 @@ import {
 } from "recharts";
 import {
   Building2, Activity, UserPlus, Layers, UserMinus, TrendingUp,
-  Calendar, AlertCircle, Info,
+  Calendar, Info,
 } from "lucide-react";
 import Card from "../../../components/common/Card";
 import Badge from "../../../components/common/Badge";
-import { type KpiCard, type ExpiryRow, type PipelineRow } from "../../../types/interfaces";
+import { type KpiCard, type PipelineRow } from "../../../types/interfaces";
 import {
   SEED_SA_KPI_DATA,
   SEED_SA_PLAN_DATA,
@@ -190,7 +190,7 @@ const SuperAdminDashboard = () => {
       [],
       ["KPI METRICS"],
       ["Metric", "Value", "Change"],
-      ...KPI_DATA.map(k => [k.label, k.value, `${k.changeUp ? "+" : "-"}${k.change}`]),
+      ...KPI_WITH_ICONS.map((k: KpiCard) => [k.label, k.value, `${k.changeUp ? "+" : "-"}${k.change}`]),
     ]), "KPI Metrics");
 
     XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([

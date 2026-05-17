@@ -6,8 +6,6 @@ import {
   BookOpen, Monitor, ShoppingBag, Calendar, DollarSign,
   Clock, PieChart, AlertCircle, Rss, Bell,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
 // ── Types ─────────────────────────────────────────────────────────────────────
 import { type ReportItem, type ReportSection } from "../../types/interfaces";
 

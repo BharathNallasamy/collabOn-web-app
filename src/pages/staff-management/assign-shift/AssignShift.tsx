@@ -8,7 +8,7 @@ import Modal from "../../../components/common/Modal/Modal";
 
 import { type EmployeeShiftData } from "../../../types/interfaces";
 
-import { MOCK_EMPLOYEES_SHIFT } from "../../../types/mockData";
+import { MOCK_EMPLOYEE_SHIFTS } from "../../../types/mockData";
 
 const AVAILABLE_SHIFTS = ["Morning", "Evening"];
 
@@ -22,9 +22,9 @@ const AssignShift = () => {
   const [selectedShift, setSelectedShift] = useState("Morning");
 
   const itemsPerPage = 7;
-  const totalItems = MOCK_EMPLOYEES_SHIFT.length;
+  const totalItems = MOCK_EMPLOYEE_SHIFTS.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  const currentItems = MOCK_EMPLOYEES_SHIFT.slice(
+  const currentItems = MOCK_EMPLOYEE_SHIFTS.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
